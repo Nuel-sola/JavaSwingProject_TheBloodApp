@@ -1,0 +1,92 @@
+import pandas as pd
+
+# Load the dataset
+dog_owners_data = pd.read_csv("C:/Users/nirut/Downloads/20170308hundehalter.csv")
+
+# Display the first few rows of the dataset
+print(dog_owners_data.head())
+
+import matplotlib.pyplot as plt
+
+# Create histograms for selected columns
+plt.figure(figsize=(10, 8))
+
+plt.subplot(3, 1, 1)
+dog_owners_data['ALTER'].hist()
+plt.title('Age Distribution of Dog Owners')
+plt.xlabel('Age')
+plt.ylabel('Frequency')
+
+plt.subplot(3, 1, 2)
+dog_owners_data['GESCHLECHT'].hist()
+plt.title('Gender Distribution of Dog Owners')
+plt.xlabel('Gender')
+plt.ylabel('Frequency')
+
+plt.subplot(3, 1, 3)
+dog_owners_data['STADTKREIS'].hist()
+plt.title('District Distribution of Dog Owners')
+plt.xlabel('District')
+plt.ylabel('Frequency')
+
+plt.tight_layout()
+plt.show()
+
+
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+# Load the dataset
+dog_owners_data = pd.read_csv("C:/Users/nirut/Downloads/20170308hundehalter.csv")
+
+# Drop rows with missing values in the relevant columns
+dog_owners_data = dog_owners_data.dropna(subset=['ALTER', 'GESCHLECHT', 'STADTKREIS'])
+
+# Create histograms for each variable
+plt.figure(figsize=(12, 6))
+
+# Age distribution
+plt.subplot(1, 3, 1)
+sns.histplot(dog_owners_data['ALTER'], bins=20, kde=True)
+plt.title('Distribution of Dog Owners by Age')
+plt.xlabel('Age')
+
+# Gender distribution
+plt.subplot(1, 3, 2)
+sns.countplot(data=dog_owners_data, x='GESCHLECHT')
+plt.title('Distribution of Dog Owners by Gender')
+plt.xlabel('Gender')
+
+# City district distribution
+plt.subplot(1, 3, 3)
+sns.countplot(data=dog_owners_data, x='STADTKREIS')
+plt.title('Distribution of Dog Owners by City District')
+plt.xlabel('City District')
+
+plt.tight_layout()
+plt.show()
+
+# 2. Age Distribution of Dog Owners
+age_distribution = dog_owners_data['ALTER'].value_counts().sort_index()
+plt.figure(figsize=(10, 6))
+age_distribution.plot(kind='line', marker='o', color='r')
+plt.title('Age Distribution of Dog Owners')
+plt.xlabel('Age Group')
+plt.ylabel('Number of Dog Owners')
+plt.xticks(rotation=45)
+plt.grid(True)
+plt.show()
+
+
+# 3 Gender-wise Distribution of Dog Breeds
+gender_breed_distribution = dog_owners_data.groupby(['GESCHLECHT', 'RASSENTYP']).size().unstack(fill_value=0)
+plt.figure(figsize=(12, 8))
+gender_breed_distribution.plot(kind='line', marker='o')
+plt.title('Gender-wise Distribution of Dog Breeds')
+plt.xlabel('Gender')
+plt.ylabel('Number of Dog Breeds')
+plt.grid(True)
+plt.legend(title='Dog Breed')
+plt.xticks(rotation=45)
+plt.show()
