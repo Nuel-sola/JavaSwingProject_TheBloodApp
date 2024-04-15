@@ -5,11 +5,13 @@
  */
 package blood_donation_system;
 
+import java.awt.HeadlessException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.DriverManager;
 import java.sql.Statement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -240,7 +242,7 @@ public class Purchaser_reg extends javax.swing.JFrame {
                    stm.executeUpdate();
                    JOptionPane.showMessageDialog(this,"Register Successful");
                    new start_page().setVisible(true);
-               } catch (Exception ex) {
+               } catch (HeadlessException | ClassNotFoundException | NumberFormatException | SQLException ex) {
                    Logger.getLogger(Purchaser_reg.class.getName()).log(Level.SEVERE, null, ex);
                }
            }

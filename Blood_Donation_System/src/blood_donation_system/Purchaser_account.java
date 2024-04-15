@@ -9,11 +9,13 @@ package blood_donation_system;
  *
  * @author asus
  */
+import java.awt.HeadlessException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.DriverManager;
 import java.sql.Statement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -37,7 +39,7 @@ public class Purchaser_account extends javax.swing.JFrame {
             jLabel9.setText(rs.getString(4));
             jLabel10.setText(rs.getString(7));
             
-        } catch (Exception ex) {
+        } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(Purchaser_account.class.getName()).log(Level.SEVERE, null, ex);
         }
         
@@ -265,7 +267,7 @@ public class Purchaser_account extends javax.swing.JFrame {
             stm.executeUpdate();
             JOptionPane.showMessageDialog(this,"Purchase Successful!!");
             new start_page().setVisible(true);
-        } catch (Exception ex) {
+        } catch (HeadlessException | ClassNotFoundException | SQLException ex) {
             Logger.getLogger(Purchaser_account.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton1ActionPerformed

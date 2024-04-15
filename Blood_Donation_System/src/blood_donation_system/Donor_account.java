@@ -5,10 +5,12 @@
  */
 package blood_donation_system;
 
+import java.awt.HeadlessException;
 import java.sql.PreparedStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -356,7 +358,7 @@ public class Donor_account extends javax.swing.JFrame {
             
             
             
-        } catch (Exception ex) {
+        } catch (HeadlessException | ClassNotFoundException | NumberFormatException | SQLException ex) {
             Logger.getLogger(Donor_account.class.getName()).log(Level.SEVERE, null, ex);
         }
            
