@@ -202,51 +202,49 @@ public class Purchaser_reg extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        
-       String name=jTextField1.getText();
-       String add=jTextField2.getText();
-       String pass=jTextField4.getText();
-       String mobile=jTextField3.getText();
-       String user=jTextField6.getText();
-       String conpass=jTextField5.getText();
-       
-       if(name.equals("")|| add.equals("")||pass.equals("")||mobile.equals("")||user.equals("")||conpass.equals(""))
-       {
-           JOptionPane.showMessageDialog(this,"All fields are required");
-       }
-       else
-       {
-           if(pass.equals(conpass)==false)
-           {
-               JOptionPane.showMessageDialog(this,"Password and Confirm Password must be match..");
-           }
-           else
-           {
-               try {
-                   Class.forName("com.mysql.jdbc.Driver");
-                   Connection con=DriverManager.getConnection("jdbc:mysql://localhost/blooddonation","root","");
-                   Statement st=con.createStatement();
-                   ResultSet rs= st.executeQuery("select count(*) from purchaser");
-                   rs.next();
-                   String date=String.valueOf(java.time.LocalDate.now());
-                   int no=Integer.parseInt(rs.getString(1))+1;
-                   PreparedStatement stm=con.prepareStatement("insert into purchaser values(?,?,?,?,?,?,?)");
-                   stm.setInt(1, no);
-                   stm.setString(2, name);
-                   stm.setString(3,mobile);
-                   stm.setString(4,add);
-                   stm.setString(5, user);
-                   stm.setString(6, pass);
-                   stm.setString(7, date);
-                   stm.executeUpdate();
-                   JOptionPane.showMessageDialog(this,"Register Successful");
-                   new start_page().setVisible(true);
-               } catch (HeadlessException | ClassNotFoundException | NumberFormatException | SQLException ex) {
-                   Logger.getLogger(Purchaser_reg.class.getName()).log(Level.SEVERE, null, ex);
-               }
-           }
-       }
+       String name = jTextField1.getText();
+    String add = jTextField2.getText();
+    String pass = jTextField4.getText();
+    String mobile = jTextField3.getText();
+    String user = jTextField6.getText();
+    String conpass = jTextField5.getText();
+
+    if (name.equals("") || add.equals("") || pass.equals("") || mobile.equals("") || user.equals("") || conpass.equals("")) {
+        JOptionPane.showMessageDialog(this, "All fields are required");
+    } else {
+        if (!pass.equals(conpass)) {
+            JOptionPane.showMessageDialog(this, "Password and Confirm Password must match.");
+        } else {
+            try {
+                Class.forName("com.mysql.jdbc.Driver");
+                Connection con = DriverManager.getConnection("jdbc:mysql://localhost/blooddonation", "root", "");
+                Statement st = con.createStatement();
+                ResultSet rs = st.executeQuery("select count(*) from purchaser");
+                rs.next();
+                String date = String.valueOf(java.time.LocalDate.now());
+                int no = Integer.parseInt(rs.getString(1)) + 1;
+                PreparedStatement stm = con.prepareStatement("insert into purchaser values(?,?,?,?,?,?,?)");
+                stm.setInt(1, no);
+                stm.setString(2, name);
+                stm.setString(3, mobile);
+                stm.setString(4, add);
+                stm.setString(5, user);
+                stm.setString(6, pass);
+                stm.setString(7, date);
+                stm.executeUpdate();
+                JOptionPane.showMessageDialog(this, "Register Successful");
+
+                // Additional functionalities for blood purchase
+                // Example: Redirect to blood purchase page
+               
+
+                // Close the current registration window
+                this.dispose();
+            } catch (HeadlessException | ClassNotFoundException | NumberFormatException | SQLException ex) {
+                Logger.getLogger(Purchaser_reg.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
        
        
     }//GEN-LAST:event_jButton1ActionPerformed

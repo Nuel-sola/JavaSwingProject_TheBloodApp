@@ -158,33 +158,27 @@ public class search_donor extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        String type=jComboBox1.getSelectedItem().toString();
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection con=DriverManager.getConnection("jdbc:mysql://localhost/blooddonation","root","");
-            Statement st=con.createStatement();
-            ResultSet rs=st.executeQuery("select * from donor where bloodgroup='"+type+"'");
-            DefaultTableModel tb=(DefaultTableModel)jTable1.getModel();
-            if(tb.getRowCount()>0)
-            {
-               tb.removeRow(0);
-               tb.setRowCount(0);
-            }
-            while(rs.next())
-            {
-                String name =rs.getString(2);
-                String sex=rs.getString(4);
-                String age=rs.getString(5);
-                String add=rs.getString(6);
-                String phone=rs.getString(7);
-                String toData[]={name,sex,age,add,phone};
-                tb.addRow(toData);
-            }
-           jLabel3.setText("TOTAL "+String.valueOf(tb.getRowCount())+" DONOR AVAILABLE FOR "+type+" BLOOD GROUP") ;
-        } catch (Exception ex) {
-            Logger.getLogger(search_donor.class.getName()).log(Level.SEVERE, null, ex);
+        String type = jComboBox1.getSelectedItem().toString();
+    try {
+        Class.forName("com.mysql.jdbc.Driver");
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost/blooddonation", "root", "root");
+        Statement st = con.createStatement();
+        ResultSet rs = st.executeQuery("SELECT * FROM donor WHERE bloodgroup='" + type + "'");
+        DefaultTableModel tb = (DefaultTableModel) jTable1.getModel();
+        tb.setRowCount(0); // Clear the table before populating it with new data
+        while (rs.next()) {
+            String name = rs.getString("name");
+            String sex = rs.getString("sex");
+            int age = rs.getInt("age");
+            String address = rs.getString("address");
+            long phone = rs.getLong("phoneno");
+            Object[] row = {name, sex, age, address, phone};
+            tb.addRow(row);
         }
+        jLabel3.setText("TOTAL " + tb.getRowCount() + " DONOR AVAILABLE FOR " + type + " BLOOD GROUP");
+    } catch (Exception ex) {
+        Logger.getLogger(search_donor.class.getName()).log(Level.SEVERE, null, ex);
+    }
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -235,3 +229,4 @@ public class search_donor extends javax.swing.JFrame {
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }
+
