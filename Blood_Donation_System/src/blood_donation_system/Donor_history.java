@@ -32,7 +32,7 @@ public class Donor_history extends javax.swing.JFrame {
         fetchDataFromDatabase();
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            Connection con=DriverManager.getConnection("jdbc:mysql://localhost/blooddonation","root","");
+            Connection con=DriverManager.getConnection("jdbc:mysql://localhost/blooddonation","root","root");
             Statement st=con.createStatement();
             ResultSet rs=st.executeQuery("select * from donor");
             DefaultTableModel tb=(DefaultTableModel)jTable1.getModel();
@@ -52,7 +52,7 @@ public class Donor_history extends javax.swing.JFrame {
                 String toData[]={name,grp,sex,age,add,phone};
                 tb.addRow(toData);
             }
-        } catch (Exception ex) {
+        } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(Donor_history.class.getName()).log(Level.SEVERE, null, ex);
         }
             
@@ -188,13 +188,11 @@ public class Donor_history extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    new Donor_history().setVisible(true);
-                } catch (SQLException ex) {
-                    Logger.getLogger(Donor_history.class.getName()).log(Level.SEVERE, null, ex);
-                }
+        java.awt.EventQueue.invokeLater(() -> {
+            try {
+                new Donor_history().setVisible(true);
+            } catch (SQLException ex) {
+                Logger.getLogger(Donor_history.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
     }

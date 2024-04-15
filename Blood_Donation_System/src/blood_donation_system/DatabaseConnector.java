@@ -4,46 +4,16 @@
  */
 package blood_donation_system;
 
+import java.sql.Connection;
+
 /**
  *
  * @author nirut
  */
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+class DatabaseConnector {
 
-public class DatabaseConnector {
-
-    private static final String DB_URL = "jdbc:mysql://localhost/blooddonation";
-    private static final String USER = "root";
-    private static final String PASSWORD = "root";
-
-    private Connection connection;
-
-    public DatabaseConnector() {
-        try {
-            // Register the JDBC driver
-            Class.forName("com.mysql.jdbc.Driver");
-            // Open a connection
-            connection = DriverManager.getConnection(DB_URL, USER, PASSWORD);
-            System.out.println("Connected to database successfully!");
-        } catch (ClassNotFoundException | SQLException e) {
-            System.err.println("Failed to connect to database!");
-        }
+    Connection getConnection() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-
-    public Connection getConnection() {
-        return connection;
-    }
-
-    public void closeConnection() {
-        if (connection != null) {
-            try {
-                connection.close();
-                System.out.println("Connection closed successfully!");
-            } catch (SQLException e) {
-                System.err.println("Failed to close connection!");
-            }
-        }
-    }
+    
 }

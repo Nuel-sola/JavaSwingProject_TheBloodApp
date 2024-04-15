@@ -2,8 +2,12 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
 
-CREATE DATABASE IF NOT EXISTS blooddonation;
+DROP TABLE IF EXISTS available_pac;
+DROP TABLE IF EXISTS donor;
+DROP TABLE IF EXISTS donorhistory;
+DROP TABLE IF EXISTS purchaser;
 
+CREATE DATABASE IF NOT EXISTS blooddonation;
 USE blooddonation;
 
 CREATE TABLE IF NOT EXISTS available_pac (
@@ -36,12 +40,12 @@ CREATE TABLE IF NOT EXISTS donor (
 );
 
 INSERT INTO donor (name, bloodgroup, sex, age, address, phoneno, date, username, password) VALUES
-('pooja Rupanwar', 'A+', 'Female', 20, 'satara', 2143563432, '2020-03-03', 'pooja', '1234'),
-('Priya More', 'O+', 'Female', 30, 'Nagpur', 4356433265, '2021-03-08', 'priya', 'priya12'),
-('Anmol Kale', 'B+', 'Male', 40, 'Gadital,Nashik', 6578893421, '2021-03-08', 'anmol', 'Anmol5'),
-('kajol pawar', 'B+', 'Female', 20, 'Nagar', 3465329856, '2021-03-08', 'kajol', 'pawar1'),
-('vikas koyale', 'A+', 'Male', 50, 'Indore', 3443567856, '2021-03-08', 'koyale', 'koyale'),
-('Chetan Salunkhe', 'A+', 'Male', 20, 'Ram Nagar', 2354763456, '2021-03-09', 'chetan', 'chetan12');
+('John Smith', 'A+', 'Male', 25, '123 Main St, Anytown', 2143563432, '2020-03-03', 'john', 'john'),
+('Emily Johnson', 'O+', 'Female', 35, '456 Oak St, Springfield', 4356433265, '2021-03-08', 'emily', 'emily'),
+('Michael Brown', 'B+', 'Male', 45, '789 Pine St, Rivertown', 6578893421, '2021-03-08', 'michael', 'michael'),
+('Emma Davis', 'B+', 'Female', 25, '101 Elm St, Lakeside', 3465329856, '2021-03-08', 'emma', 'emma'),
+('Christopher Wilson', 'A+', 'Male', 55, '222 Maple Ave, Hilltown', 3443567856, '2021-03-08', 'chris', 'chris'),
+('Sarah Thompson', 'A+', 'Female', 25, '321 Cedar St, Parkville', 2354763456, '2021-03-09', 'sarah', 'sarah');
 
 
 CREATE TABLE IF NOT EXISTS donorhistory (
@@ -52,12 +56,12 @@ CREATE TABLE IF NOT EXISTS donorhistory (
 );
 
 INSERT INTO donorhistory (bloodtype, user, date, time) VALUES
-('A+', 'pooja', '2020-03-03', '13:42:47'),
-('O+', 'priya', '2021-03-08', '13:55:34'),
-('A+', 'pooja', '2021-03-08', '13:58:09'),
-('B+', 'kajol', '2021-03-08', '22:53:34'),
-('A+', 'koyale', '2021-03-08', '23:05:55'),
-('A+', 'chetan', '2021-03-09', '13:54:29');
+('A+', 'john', '2020-03-03', '13:42:47'),
+('O+', 'emily', '2021-03-08', '13:55:34'),
+('B+', 'micheal', '2021-03-08', '13:58:09'),
+('B+', 'emma', '2021-03-08', '22:53:34'),
+('A+', 'chris', '2021-03-08', '23:05:55'),
+('A+', 'sarah', '2021-03-09', '13:54:29');
 
 CREATE TABLE IF NOT EXISTS purchaser (
   id int(11) NOT NULL AUTO_INCREMENT,
@@ -71,11 +75,12 @@ CREATE TABLE IF NOT EXISTS purchaser (
 );
 
 INSERT INTO purchaser (name, mobile, address, user, password, date) VALUES
-('Sanchita Joshi', 4576349432, 'Kolhapur', 'sanchita', 'sanchita', '2021-03-08'),
-('Reeya Somvanshi', 5476435643, 'Shivaji Nagar', 'reeya', 'reeya', '2021-03-08'),
-('Pravin Nagre', 5678343265, 'Indore', 'nagare', 'nagare', '2021-03-08'),
-('Nisha More', 1234564312, 'Nagpur', 'nisha', '1234', '2021-03-08'),
-('Neha Ghadge', 3254763456, 'Rajgad', 'neha', 'neha', '2021-03-09');
-
+('John Doe', 4576349432, '123 Maple Street, Toronto', 'john', 'john', '2021-03-08'),
+('Jane Doe', 5476435643, '456 Oak Avenue, Vancouver', 'jane', 'jane', '2021-03-08'),
+('Peter Parker', 5678343265, '789 Pine Road, Montreal', 'peter', 'peter', '2021-03-08'),
+('Alice Smith', 1234564312, '101 Elm Drive, Calgary', 'alice', 'alice', '2021-03-08'),
+('Bob Johnson', 3254763456, '222 Cedar Boulevard, Ottawa', 'bob', 'bob', '2021-03-09');
 
 COMMIT;
+
+

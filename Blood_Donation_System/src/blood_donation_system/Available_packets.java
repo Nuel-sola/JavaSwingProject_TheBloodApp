@@ -25,7 +25,7 @@ public class Available_packets extends javax.swing.JFrame {
         initComponents();
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            Connection con=DriverManager.getConnection("jdbc:mysql://localhost/blooddonation","root","");
+            Connection con=DriverManager.getConnection("jdbc:mysql://localhost/blooddonation","root","root");
             Statement st=con.createStatement();
             ResultSet rs=st.executeQuery("select * from available_pac ");
             DefaultTableModel tb=(DefaultTableModel)jTable1.getModel();

@@ -23,14 +23,16 @@ public class Purchase_History extends javax.swing.JFrame {
     /**
      * Creates new form Purchase_History
      */
+    
+    private DatabaseConnector connector;
+    
     public Purchase_History() {
-        initComponents();
-        
-         fetchDataFromDatabase();
-         
-         try {
+         initComponents();
+        connector = new DatabaseConnector();
+        fetchDataFromDatabase();
+        try {
             Class.forName("com.mysql.jdbc.Driver");
-            Connection con=DriverManager.getConnection("jdbc:mysql://localhost/blooddonation","root","");
+            Connection con=DriverManager.getConnection("jdbc:mysql://localhost/blooddonation","root","root");
             Statement st=con.createStatement();
             ResultSet rs=st.executeQuery("select * from purchaser");
             DefaultTableModel tb=(DefaultTableModel)jTable1.getModel();
