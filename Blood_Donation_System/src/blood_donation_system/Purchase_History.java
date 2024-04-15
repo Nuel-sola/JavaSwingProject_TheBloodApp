@@ -8,6 +8,7 @@ package blood_donation_system;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -24,6 +25,9 @@ public class Purchase_History extends javax.swing.JFrame {
      */
     public Purchase_History() {
         initComponents();
+        
+         fetchDataFromDatabase();
+         
          try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection con=DriverManager.getConnection("jdbc:mysql://localhost/blooddonation","root","");
@@ -43,7 +47,7 @@ public class Purchase_History extends javax.swing.JFrame {
                 String toData[]={name,Contact,add};
                 tb.addRow(toData);
             }
-        } catch (Exception ex) {
+        } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(Donor_history.class.getName()).log(Level.SEVERE, null, ex);
         }
             
@@ -179,10 +183,8 @@ public class Purchase_History extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Purchase_History().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new Purchase_History().setVisible(true);
         });
     }
 
@@ -194,4 +196,32 @@ public class Purchase_History extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
+
+    private void fetchDataFromDatabase() {
+      try {
+            // Connect to the database
+            Class.forName("com.mysql.jdbc.Driver");
+          // Execute SQL query to select data from the purchaser table
+          try (var con = DriverManager.getConnection("jdbc:mysql://localhost/blooddonation", "root", "root")) {
+              // Execute SQL query to select data from the purchaser table
+              Statement st = con.createStatement();
+              ResultSet rs = st.executeQuery("SELECT * FROM purchaser");
+              // Populate the table with the fetched data
+              DefaultTableModel tb = (DefaultTableModel) jTable1.getModel();
+              tb.setRowCount(0); // Clear existing data
+              while (rs.next()) {
+                  String name = rs.getString("name");
+                  String contact = rs.getString("mobile");
+                  String address = rs.getString("address");
+                  
+                  // Add data to the table model
+                  tb.addRow(new Object[]{name, address, contact});
+              }
+              // Close the database connection
+          }
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(Purchase_History.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
 }

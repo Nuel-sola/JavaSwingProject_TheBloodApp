@@ -8,6 +8,7 @@ package blood_donation_system;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -22,8 +23,13 @@ public class Donor_history extends javax.swing.JFrame {
     /**
      * Creates new form Donor_history
      */
-    public Donor_history() {
+    
+    private DatabaseConnector connector;
+    
+    public Donor_history() throws SQLException {
         initComponents();
+        connector = new DatabaseConnector();
+        fetchDataFromDatabase();
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection con=DriverManager.getConnection("jdbc:mysql://localhost/blooddonation","root","");
@@ -184,7 +190,11 @@ public class Donor_history extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Donor_history().setVisible(true);
+                try {
+                    new Donor_history().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(Donor_history.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
@@ -197,4 +207,22 @@ public class Donor_history extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
+
+    private void fetchDataFromDatabase() throws java.sql.SQLException {
+        Connection con = connector.getConnection();
+        Statement st = con.createStatement();
+        ResultSet rs = st.executeQuery("SELECT * FROM donor");
+        DefaultTableModel tb = (DefaultTableModel) jTable1.getModel();
+        tb.setRowCount(0); // Clear existing rows
+        while (rs.next()) {
+            String name = rs.getString(2);
+            String grp = rs.getString(3);
+            String sex = rs.getString(4);
+            String age = rs.getString(5);
+            String add = rs.getString(6);
+            String phone = rs.getString(7);
+            String[] rowData = {name, grp, sex, age, add, phone};
+            tb.addRow(rowData);
+        }
+    }
 }
