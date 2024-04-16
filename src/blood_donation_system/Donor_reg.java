@@ -231,7 +231,7 @@ public class Donor_reg extends javax.swing.JFrame {
         } else {
             try {
                 Class.forName("com.mysql.jdbc.Driver");
-                Connection con = DriverManager.getConnection("jdbc:mysql://localhost/blooddonation", "root", "");
+                Connection con = DriverManager.getConnection("jdbc:mysql://localhost/blooddonation", "root", "root");
 
                 String query = "INSERT INTO donor (name, bloodgroup, sex, age, address, phoneno, date, username, password) VALUES (?, ?, ?, ?, ?, ?, CURDATE(), ?, ?)";
                 PreparedStatement st = con.prepareStatement(query);
