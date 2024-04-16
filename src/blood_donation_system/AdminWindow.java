@@ -41,7 +41,6 @@ public class AdminWindow extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
@@ -49,7 +48,6 @@ public class AdminWindow extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         AddDonor = new javax.swing.JButton();
         DeleteDonor = new javax.swing.JButton();
-        AddPurchaser = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jButton8 = new javax.swing.JButton();
 
@@ -62,7 +60,7 @@ public class AdminWindow extends javax.swing.JFrame {
 
         jButton3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton3.setForeground(new java.awt.Color(255, 51, 51));
-        jButton3.setText("Available Blood Packets");
+        jButton3.setText("Analayse Available Blood Packets");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -78,17 +76,7 @@ public class AdminWindow extends javax.swing.JFrame {
                 jButton4ActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 280, 275, 33));
-
-        jButton6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton6.setForeground(new java.awt.Color(255, 51, 51));
-        jButton6.setText("Blood Purchaser History");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
-            }
-        });
-        jPanel2.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 280, 275, 34));
+        jPanel2.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 390, 275, 33));
 
         jLabel9.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 51));
@@ -108,7 +96,7 @@ public class AdminWindow extends javax.swing.JFrame {
                 AddDonorActionPerformed(evt);
             }
         });
-        jPanel2.add(AddDonor, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 210, -1, -1));
+        jPanel2.add(AddDonor, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 240, -1, -1));
 
         DeleteDonor.setText("Delete Donor");
         DeleteDonor.addActionListener(new java.awt.event.ActionListener() {
@@ -116,15 +104,7 @@ public class AdminWindow extends javax.swing.JFrame {
                 DeleteDonorActionPerformed(evt);
             }
         });
-        jPanel2.add(DeleteDonor, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 170, -1, -1));
-
-        AddPurchaser.setText("Add Purchaser");
-        AddPurchaser.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AddPurchaserActionPerformed(evt);
-            }
-        });
-        jPanel2.add(AddPurchaser, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 170, -1, -1));
+        jPanel2.add(DeleteDonor, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 280, -1, -1));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IconicPackage/112804-red-and-black-blurred-background-vector.png"))); // NOI18N
         jLabel3.setText("jLabel3");
@@ -171,11 +151,6 @@ public class AdminWindow extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
-        new Purchase_History().setVisible(true);
-    }//GEN-LAST:event_jButton6ActionPerformed
-
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
         new search_donor().setVisible(true);
@@ -187,16 +162,13 @@ public class AdminWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void AddDonorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddDonorActionPerformed
-        // TODO add your handling code here:
+    Donor_reg donorRegWindow = new Donor_reg();
+    donorRegWindow.setVisible(true);
     }//GEN-LAST:event_AddDonorActionPerformed
 
     private void DeleteDonorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteDonorActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_DeleteDonorActionPerformed
-
-    private void AddPurchaserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddPurchaserActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_AddPurchaserActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
@@ -231,11 +203,9 @@ public class AdminWindow extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddDonor;
-    private javax.swing.JButton AddPurchaser;
     private javax.swing.JButton DeleteDonor;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

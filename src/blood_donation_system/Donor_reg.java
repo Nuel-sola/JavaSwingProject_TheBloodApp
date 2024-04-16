@@ -5,6 +5,7 @@
  */
 package blood_donation_system;
 
+import java.awt.HeadlessException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -13,6 +14,7 @@ import java.sql.PreparedStatement;
 import java.sql.DriverManager;
 import java.sql.Statement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  *
@@ -211,56 +213,50 @@ public class Donor_reg extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        String name=jTextField1.getText();
-        String group=jComboBox1.getSelectedItem().toString();
-        String sex=jComboBox2.getSelectedItem().toString();
-        String age=jTextField2.getText();
-        String add=jTextField3.getText();
-        String mobile=jTextField5.getText();
-        String user=jTextField8.getText();
-        String pass=jTextField6.getText();
-        String conpass=jTextField7.getText();
-        if(name.equals("") || group.equals("")|| sex.equals("")||add.equals("")||mobile.equals("")||user.equals("")||pass.equals("")||conpass.equals(""))
-        {
-            JOptionPane.showMessageDialog(this, "All field are required");
-        }
-        else
-        {
-            if(pass.equals(conpass)==false)
-            {
-                JOptionPane.showMessageDialog(this, "Password and Confirm Password must be match..");
-            }    
-            else
-            {
-                try {
-                    Class.forName("com.mysql.jdbc.Driver");
-                    Connection con=DriverManager.getConnection("jdbc:mysql://localhost/blooddonation","root","");
-                    Statement stmt=con.createStatement();
-                    ResultSet rs=stmt.executeQuery("select count(*) from donor");
-                    rs.next();
-                    String date=String.valueOf(java.time.LocalDate.now());
-                    String no=rs.getString(1);
-                    int no1=Integer.parseInt(no)+1;
-                    PreparedStatement st=con.prepareStatement("insert into donor values(?,?,?,?,?,?,?,?,?,?)");
-                  st.setInt(1,no1);
-                  st.setString(2,name);
-                  st.setString(3,group);
-                  st.setString(4,sex);
-                  st.setString(5,age);
-                  st.setString(6,add);
-                  st.setString(7, mobile);
-                  st.setString(8, date);
-                  st.setString(9, user);
-                  st.setString(10, pass);
-                  st.executeUpdate();
-                  JOptionPane.showMessageDialog(this,"Register Successful!!");
-                    
-                } catch (Exception ex) {
-                    Logger.getLogger(Donor_reg.class.getName()).log(Level.SEVERE, null, ex);
+     String name = jTextField1.getText();
+    String group = jComboBox1.getSelectedItem().toString();
+    String sex = jComboBox2.getSelectedItem().toString();
+    String age = jTextField2.getText();
+    String add = jTextField3.getText();
+    String mobile = jTextField5.getText();
+    String user = jTextField8.getText();
+    String pass = jTextField6.getText();
+    String conpass = jTextField7.getText();
+
+    if (name.equals("") || group.equals("") || sex.equals("") || add.equals("") || mobile.equals("") || user.equals("") || pass.equals("") || conpass.equals("")) {
+        JOptionPane.showMessageDialog(this, "All fields are required");
+    } else {
+        if (!pass.equals(conpass)) {
+            JOptionPane.showMessageDialog(this, "Password and Confirm Password must match.");
+        } else {
+            try {
+                Class.forName("com.mysql.jdbc.Driver");
+                Connection con = DriverManager.getConnection("jdbc:mysql://localhost/blooddonation", "root", "");
+
+                String query = "INSERT INTO donor (name, bloodgroup, sex, age, address, phoneno, date, username, password) VALUES (?, ?, ?, ?, ?, ?, CURDATE(), ?, ?)";
+                PreparedStatement st = con.prepareStatement(query);
+                st.setString(1, name);
+                st.setString(2, group);
+                st.setString(3, sex);
+                st.setInt(4, Integer.parseInt(age));
+                st.setString(5, add);
+                st.setLong(6, Long.parseLong(mobile));
+                st.setString(7, user);
+                st.setString(8, pass);
+
+                int rowsInserted = st.executeUpdate();
+                if (rowsInserted > 0) {
+                    JOptionPane.showMessageDialog(this, "Register Successful!!");
+                } else {
+                    JOptionPane.showMessageDialog(this, "Register Failed!!");
                 }
                 
+                con.close();
+            } catch (HeadlessException | ClassNotFoundException | NumberFormatException | SQLException ex) {
+                JOptionPane.showMessageDialog(this, "Error: " + ex.getMessage());
             }
+        }
+    
         }
         
 
