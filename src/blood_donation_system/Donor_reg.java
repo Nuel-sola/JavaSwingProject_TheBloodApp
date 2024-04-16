@@ -231,27 +231,25 @@ public class Donor_reg extends javax.swing.JFrame {
         } else {
             try {
                 Class.forName("com.mysql.jdbc.Driver");
-                Connection con = DriverManager.getConnection("jdbc:mysql://localhost/blooddonation", "root", "root");
-
-                String query = "INSERT INTO donor (name, bloodgroup, sex, age, address, phoneno, date, username, password) VALUES (?, ?, ?, ?, ?, ?, CURDATE(), ?, ?)";
-                PreparedStatement st = con.prepareStatement(query);
-                st.setString(1, name);
-                st.setString(2, group);
-                st.setString(3, sex);
-                st.setInt(4, Integer.parseInt(age));
-                st.setString(5, add);
-                st.setLong(6, Long.parseLong(mobile));
-                st.setString(7, user);
-                st.setString(8, pass);
-
-                int rowsInserted = st.executeUpdate();
-                if (rowsInserted > 0) {
-                    JOptionPane.showMessageDialog(this, "Register Successful!!");
-                } else {
-                    JOptionPane.showMessageDialog(this, "Register Failed!!");
+                try (Connection con = DriverManager.getConnection("jdbc:mysql://localhost/blooddonation", "root", "root")) {
+                    String query = "INSERT INTO donor (name, bloodgroup, sex, age, address, phoneno, date, username, password) VALUES (?, ?, ?, ?, ?, ?, CURDATE(), ?, ?)";
+                    PreparedStatement st = con.prepareStatement(query);
+                    st.setString(1, name);
+                    st.setString(2, group);
+                    st.setString(3, sex);
+                    st.setInt(4, Integer.parseInt(age));
+                    st.setString(5, add);
+                    st.setLong(6, Long.parseLong(mobile));
+                    st.setString(7, user);
+                    st.setString(8, pass);
+                    
+                    int rowsInserted = st.executeUpdate();
+                    if (rowsInserted > 0) {
+                        JOptionPane.showMessageDialog(this, "Register Successful!!");
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Register Failed!!");
+                    }
                 }
-                
-                con.close();
             } catch (HeadlessException | ClassNotFoundException | NumberFormatException | SQLException ex) {
                 JOptionPane.showMessageDialog(this, "Error: " + ex.getMessage());
             }
