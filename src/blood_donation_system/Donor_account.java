@@ -97,6 +97,7 @@ public class Donor_account extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -115,14 +116,14 @@ public class Donor_account extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(310, Short.MAX_VALUE)
+                .addContainerGap(262, Short.MAX_VALUE)
                 .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 683, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(207, 207, 207))
+                .addGap(255, 255, 255))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(0, 18, Short.MAX_VALUE)
+                .addGap(0, 43, Short.MAX_VALUE)
                 .addComponent(jLabel17))
         );
 
@@ -136,7 +137,7 @@ public class Donor_account extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Name:");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(67, 140, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 140, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
@@ -176,12 +177,12 @@ public class Donor_account extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(402, 194, 100, 40));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 220, 100, 40));
 
         jLabel10.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Check previous blood donation history");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(402, 254, 500, 40));
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 260, 500, 40));
 
         jTable1.setBackground(new java.awt.Color(0, 153, 204));
         jTable1.setForeground(new java.awt.Color(255, 255, 255));
@@ -195,7 +196,7 @@ public class Donor_account extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(402, 306, 510, 290));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 310, 510, 290));
 
         jLabel11.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
@@ -227,9 +228,17 @@ public class Donor_account extends javax.swing.JFrame {
         jLabel16.setText("jLabel16");
         jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(221, 364, -1, -1));
 
+        jButton2.setText("Back");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 80, 94, 48));
+
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IconicPackage/112804-red-and-black-blurred-background-vector.png"))); // NOI18N
         jLabel2.setText("jLabel2");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 50, 7750, 4550));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 7750, 4620));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -252,7 +261,7 @@ public class Donor_account extends javax.swing.JFrame {
         String time=String.valueOf(java.time.LocalTime.now());
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            Connection con=DriverManager.getConnection("jdbc:mysql://localhost/blooddonation","root","");
+            Connection con=DriverManager.getConnection("jdbc:mysql://localhost/blooddonation","root","root");
             
             PreparedStatement st=con.prepareStatement("insert into donorhistory values(?,?,?,?)");
             String myuser=user;
@@ -267,7 +276,7 @@ public class Donor_account extends javax.swing.JFrame {
             rs.next();
             int no=Integer.parseInt(rs.getString(2));
             no=no+1;
-            JOptionPane.showMessageDialog(this,"THANK YOU FOR DONATION!!");
+            JOptionPane.showMessageDialog(this,"THANK YOU FOR DONATION!! YOU WIL BE CONTACTED SHORTLY FOR CONSULTATION. SEE BLOW YOUR DONATION METRICS");
             PreparedStatement st2=con.prepareStatement("update available_pac set available='"+no+"' where name='"+type+"'");
             st2.executeUpdate();
              
@@ -286,7 +295,7 @@ public class Donor_account extends javax.swing.JFrame {
                 String toData[]={date1,time1};
                 tb.addRow(toData);
             }
-            new start_page().setVisible(true);
+           
             
             
             
@@ -298,6 +307,14 @@ public class Donor_account extends javax.swing.JFrame {
            
         
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(null,  " You are being logged out Click OK");
+          start_page ob = new start_page();
+            ob.setVisible(true);
+            this.setVisible(false);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -336,6 +353,7 @@ public class Donor_account extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

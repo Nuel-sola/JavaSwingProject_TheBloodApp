@@ -46,6 +46,7 @@ public class DonarStartPage extends javax.swing.JFrame {
         DonorAccount = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         DonorHistory = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -62,30 +63,38 @@ public class DonarStartPage extends javax.swing.JFrame {
         jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(824, 1241, -1, -1));
         jPanel2.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(921, 109, -1, -1));
 
-        DonorAccount.setText("Donor Account");
+        DonorAccount.setText("View Your Account");
         DonorAccount.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 DonorAccountActionPerformed(evt);
             }
         });
-        jPanel2.add(DonorAccount, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 200, -1, -1));
+        jPanel2.add(DonorAccount, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 140, 230, 40));
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Donor Panel");
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 30, 290, -1));
 
-        DonorHistory.setText("Donor History");
+        DonorHistory.setText("View Your History");
         DonorHistory.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 DonorHistoryActionPerformed(evt);
             }
         });
-        jPanel2.add(DonorHistory, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 260, -1, -1));
+        jPanel2.add(DonorHistory, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 250, 230, 40));
+
+        jButton1.setText("Back");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 60, -1, 40));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IconicPackage/112804-red-and-black-blurred-background-vector.png"))); // NOI18N
         jLabel3.setText("jLabel3");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, -210, 8040, 5150));
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -200, 8040, 5150));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -140,6 +149,13 @@ public class DonarStartPage extends javax.swing.JFrame {
     donorHistoryPage.setVisible(true);
     }//GEN-LAST:event_DonorHistoryActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        AdminWindow ob = new AdminWindow();
+            ob.setVisible(true);
+            this.setVisible(false);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -179,6 +195,7 @@ public class DonarStartPage extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton DonorAccount;
     private javax.swing.JButton DonorHistory;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel16;

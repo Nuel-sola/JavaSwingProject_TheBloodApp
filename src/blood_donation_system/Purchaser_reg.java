@@ -57,6 +57,7 @@ public class Purchaser_reg extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        backBtn = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         jButton6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -86,7 +87,7 @@ public class Purchaser_reg extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(232, 232, 232)
                 .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 683, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(285, Short.MAX_VALUE))
+                .addContainerGap(565, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -96,7 +97,7 @@ public class Purchaser_reg extends javax.swing.JFrame {
                 .addContainerGap(12, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1200, -1));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1480, -1));
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -149,8 +150,16 @@ public class Purchaser_reg extends javax.swing.JFrame {
         });
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 440, 110, 50));
 
+        backBtn.setText("Back");
+        backBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backBtnActionPerformed(evt);
+            }
+        });
+        jPanel1.add(backBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(1280, 70, 100, 50));
+
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IconicPackage/112804-red-and-black-blurred-background-vector.png"))); // NOI18N
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 7340, 4530));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 7340, 4500));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -186,7 +195,7 @@ public class Purchaser_reg extends javax.swing.JFrame {
         } else {
             try {
                 Class.forName("com.mysql.jdbc.Driver");
-                Connection con = DriverManager.getConnection("jdbc:mysql://localhost/blooddonation", "root", "");
+                Connection con = DriverManager.getConnection("jdbc:mysql://localhost/blooddonation", "root", "root");
                 Statement st = con.createStatement();
                 ResultSet rs = st.executeQuery("select count(*) from purchaser");
                 rs.next();
@@ -201,7 +210,7 @@ public class Purchaser_reg extends javax.swing.JFrame {
                 stm.setString(6, pass);
                 stm.setString(7, date);
                 stm.executeUpdate();
-                JOptionPane.showMessageDialog(this, "Register Successful");
+                JOptionPane.showMessageDialog(this, "Registration Successful and Admin is notified! please check your dashboard back in 3 days to know your Approval status");
 
                 // Additional functionalities for blood purchase
                 // Example: Redirect to blood purchase page
@@ -222,6 +231,14 @@ public class Purchaser_reg extends javax.swing.JFrame {
         // TODO add your handling code here:
         new Purchase_History().setVisible(true);
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
+        // TODO add your handling code here:
+        
+          PurchaserStartPage ob = new PurchaserStartPage();
+            ob.setVisible(true);
+            this.setVisible(false);
+    }//GEN-LAST:event_backBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -259,6 +276,7 @@ public class Purchaser_reg extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton backBtn;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;

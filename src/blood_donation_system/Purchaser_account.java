@@ -24,12 +24,13 @@ public class Purchaser_account extends javax.swing.JFrame {
 
     /**
      * Creates new form Purchaser_account
+     * @param user
      */
     public Purchaser_account(String user) {
         try {
             initComponents();
             Class.forName("com.mysql.jdbc.Driver");
-            Connection con=DriverManager.getConnection("jdbc:mysql://localhost/blooddonation","root","");
+            Connection con=DriverManager.getConnection("jdbc:mysql://localhost/blooddonation","root","root");
            
             Statement st=con.createStatement();
             ResultSet rs= st.executeQuery("select * from purchaser where user='"+user+"'");
@@ -43,6 +44,10 @@ public class Purchaser_account extends javax.swing.JFrame {
             Logger.getLogger(Purchaser_account.class.getName()).log(Level.SEVERE, null, ex);
         }
         
+    }
+
+    Purchaser_account() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     /**
