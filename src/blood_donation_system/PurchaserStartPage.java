@@ -60,13 +60,13 @@ public class PurchaserStartPage extends javax.swing.JFrame {
 
         jButton2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 51, 51));
-        jButton2.setText("Purchase Blood");
+        jButton2.setText("Request To Purchase ");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 120, 275, 33));
+        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 190, 275, 33));
 
         jButton3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton3.setForeground(new java.awt.Color(255, 51, 51));
@@ -76,7 +76,7 @@ public class PurchaserStartPage extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 200, 275, 33));
+        jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 100, 275, 33));
 
         jButton4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton4.setForeground(new java.awt.Color(255, 51, 51));
@@ -171,12 +171,16 @@ public class PurchaserStartPage extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        new Available_packets().setVisible(true);
+        new Available_packetsAdmin().setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        new Purchaser_account("user").setVisible(true);
+    Purchaser_account purchaserAccountPage = new Purchaser_account("pass the user parameter here");
+ 
+    
+    purchaserAccountPage.setVisible(true);
+//        String user = "john"; // Replace "username" with the actual username
+//        new Purchaser_account(user).setVisible(true);
         
     }//GEN-LAST:event_jButton2ActionPerformed
 

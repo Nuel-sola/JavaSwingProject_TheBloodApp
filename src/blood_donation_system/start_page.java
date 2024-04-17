@@ -57,6 +57,7 @@ public class start_page extends javax.swing.JFrame {
         jButton7 = new javax.swing.JButton();
         jTextField2 = new javax.swing.JTextField();
         jRadioButton3 = new javax.swing.JRadioButton();
+        jRadioButton4 = new javax.swing.JRadioButton();
         jLabel16 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -78,15 +79,20 @@ public class start_page extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(3, 64, -1, -1));
 
         jLabel12.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
         jLabel12.setText("User Login");
+        jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(172, 28, 183, -1));
 
         jLabel13.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         jLabel13.setText("User Name");
+        jPanel3.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(62, 109, -1, -1));
 
         jLabel14.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         jLabel14.setText("Password");
+        jPanel3.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(62, 180, -1, -1));
 
         jRadioButton1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jRadioButton1.setText("Donor");
@@ -95,6 +101,7 @@ public class start_page extends javax.swing.JFrame {
                 jRadioButton1ActionPerformed(evt);
             }
         });
+        jPanel3.add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, -1, -1));
 
         jRadioButton2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jRadioButton2.setText("Purchaser");
@@ -103,12 +110,14 @@ public class start_page extends javax.swing.JFrame {
                 jRadioButton2ActionPerformed(evt);
             }
         });
+        jPanel3.add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 250, -1, -1));
 
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
             }
         });
+        jPanel3.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(225, 111, 132, -1));
 
         jButton7.setBackground(new java.awt.Color(255, 51, 51));
         jButton7.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -119,6 +128,8 @@ public class start_page extends javax.swing.JFrame {
                 jButton7ActionPerformed(evt);
             }
         });
+        jPanel3.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(194, 299, 114, 44));
+        jPanel3.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(225, 182, 132, -1));
 
         jRadioButton3.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jRadioButton3.setText("Admin");
@@ -127,68 +138,16 @@ public class start_page extends javax.swing.JFrame {
                 jRadioButton3ActionPerformed(evt);
             }
         });
+        jPanel3.add(jRadioButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, -1, -1));
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(169, 169, 169)
-                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel11)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(59, 59, 59)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
-                                .addComponent(jRadioButton3)
-                                .addGap(79, 79, 79)
-                                .addComponent(jRadioButton1)
-                                .addGap(66, 66, 66)
-                                .addComponent(jRadioButton2))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel13)
-                                    .addComponent(jLabel14))
-                                .addGap(62, 62, 62)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addGap(209, 209, 209))
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(191, 191, 191)
-                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(jLabel12)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel11)
-                .addGap(45, 45, 45)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(71, 71, 71)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel14)))
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel13)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(45, 45, 45)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButton1)
-                    .addComponent(jRadioButton2)
-                    .addComponent(jRadioButton3))
-                .addGap(28, 28, 28)
-                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(81, Short.MAX_VALUE))
-        );
+        jRadioButton4.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        jRadioButton4.setText("Hospital");
+        jRadioButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton4ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jRadioButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 250, -1, -1));
 
         jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 250, 550, 430));
         jPanel2.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(923, 153, -1, -1));
@@ -272,6 +231,15 @@ public class start_page extends javax.swing.JFrame {
                 } else {
                     JOptionPane.showMessageDialog(this, "Incorrect Username and Password");
                 }
+            }else if (jRadioButton4.isSelected()) {
+                // Admin login logic
+                ResultSet rs = st.executeQuery("select * from admin where user='" + user + "' AND password='" + pass + "'");
+                if (rs.next()) {
+                    // If login successful, open the AdminWindow
+                    new HospitalWindow().setVisible(true);
+                } else {
+                    JOptionPane.showMessageDialog(this, "Incorrect Username and Password");
+                }
             } else {
                 JOptionPane.showMessageDialog(this, "Please select a user type");
             }
@@ -300,6 +268,16 @@ public class start_page extends javax.swing.JFrame {
             // Add your handling code here for jRadioButton1
         }
     }//GEN-LAST:event_jRadioButton1ActionPerformed
+
+    private void jRadioButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton4ActionPerformed
+        // TODO add your handling code here:
+        if (jRadioButton4.isSelected()) {
+            jRadioButton1.setSelected(false); // Deselect the other radio button
+            jRadioButton3.setSelected(false);
+            jRadioButton2.setSelected(false);// Deselect the other radio button
+            // Add your handling code here for jRadioButton2
+        }
+    }//GEN-LAST:event_jRadioButton4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -353,6 +331,7 @@ public class start_page extends javax.swing.JFrame {
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JRadioButton jRadioButton3;
+    private javax.swing.JRadioButton jRadioButton4;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
