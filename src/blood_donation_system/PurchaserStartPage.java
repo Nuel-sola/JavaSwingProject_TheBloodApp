@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package blood_donation_system;
 
 import java.util.logging.Level;
@@ -15,9 +11,10 @@ import java.sql.Statement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+
 /**
  *
- * @author pc
+ * @author Ibaad Mohammed
  */
 public class PurchaserStartPage extends javax.swing.JFrame {
 
@@ -160,7 +157,9 @@ public class PurchaserStartPage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling code here
+
+:
         new Purchase_History().setVisible(true);
     }//GEN-LAST:event_jButton6ActionPerformed
 
