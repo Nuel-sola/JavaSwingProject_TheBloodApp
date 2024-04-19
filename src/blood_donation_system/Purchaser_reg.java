@@ -235,9 +235,10 @@ public class Purchaser_reg extends javax.swing.JFrame {
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
         // TODO add your handling code here:
         
-          PurchaserStartPage ob = new PurchaserStartPage();
+          AdminWindow ob = new AdminWindow();
             ob.setVisible(true);
             this.setVisible(false);
+            
     }//GEN-LAST:event_backBtnActionPerformed
 
     /**

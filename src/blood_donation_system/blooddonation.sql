@@ -95,5 +95,23 @@ INSERT INTO purchaser (name, mobile, address, user, password, date) VALUES
 ('Alice Smith', 1234564312, '101 Elm Drive, Calgary', 'alice', 'alice', '2021-03-08'),
 ('Bob Johnson', 3254763456, '222 Cedar Boulevard, Ottawa', 'bob', 'bob', '2021-03-09');
 
+CREATE TABLE IF NOT EXISTS hospital (
+  id int(11) NOT NULL AUTO_INCREMENT,
+  name varchar(260) DEFAULT NULL,
+  user varchar(250) NOT NULL,
+  password varchar(250) NOT NULL,
+  address varchar(250) NOT NULL,
+  PRIMARY KEY (id)
+);
+
+INSERT INTO hospital (name, user, password, address) VALUES
+('Hospital A', 'hospitalA', 'passwordA', '123 Hospital St, City A'),
+('Hospital B', 'hospitalB', 'passwordB', '456 Clinic Rd, City B'),
+('Hospital C', 'hospitalC', 'passwordC', '789 Medical Ave, City C');
+
 COMMIT;
+
+SELECT * FROM hospital
+
+
 

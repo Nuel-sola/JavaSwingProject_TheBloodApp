@@ -233,7 +233,8 @@ public class start_page extends javax.swing.JFrame {
                 }
             }else if (jRadioButton4.isSelected()) {
                 // Admin login logic
-                ResultSet rs = st.executeQuery("select * from admin where user='" + user + "' AND password='" + pass + "'");
+                ResultSet rs = st.executeQuery("SELECT * FROM hospital WHERE username='" + user + "' AND password='" + pass + "'");
+
                 if (rs.next()) {
                     // If login successful, open the AdminWindow
                     new HospitalWindow().setVisible(true);
@@ -257,6 +258,7 @@ public class start_page extends javax.swing.JFrame {
         if (jRadioButton2.isSelected()) {
             jRadioButton1.setSelected(false); // Deselect the other radio button
             jRadioButton3.setSelected(false); // Deselect the other radio button
+            jRadioButton4.setSelected(false);
             // Add your handling code here for jRadioButton2
         }
     }//GEN-LAST:event_jRadioButton2ActionPerformed
@@ -264,7 +266,8 @@ public class start_page extends javax.swing.JFrame {
     private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
         if (jRadioButton1.isSelected()) {
             jRadioButton2.setSelected(false); // Deselect the other radio button
-            jRadioButton3.setSelected(false);// Deselect the other radio button
+            jRadioButton3.setSelected(false);
+            jRadioButton4.setSelected(false);// Deselect the other radio button
             // Add your handling code here for jRadioButton1
         }
     }//GEN-LAST:event_jRadioButton1ActionPerformed

@@ -43,7 +43,7 @@ public class Available_packetsAdmin extends javax.swing.JFrame {
                 tb.addRow(toData);
             }
         } catch (Exception ex) {
-            Logger.getLogger(Available_packets.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Available_packetsAdmin.class.getName()).log(Level.SEVERE, null, ex);
         }
             
     }
